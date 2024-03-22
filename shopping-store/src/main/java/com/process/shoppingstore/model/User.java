@@ -1,18 +1,21 @@
 package com.process.shoppingstore.model;
 
 
+import com.process.shoppingstore.model.enums.DocumentType;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
+@Builder
 public class User {
 
     private String userFullName;
 
     private Date userbirthDate;
 
-    private String userIdentificationType;
+    private DocumentType userIdentificationType;
 
     private String userIdentification;
 
@@ -22,7 +25,7 @@ public class User {
 
     private String userPassword;
 
-    private String userAddress;
+    private List<Address> userAddress;
 
 
 
