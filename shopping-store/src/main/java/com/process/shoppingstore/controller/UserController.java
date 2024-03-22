@@ -3,17 +3,23 @@ package com.process.shoppingstore.controller;
 import com.process.shoppingstore.model.User;
 import com.process.shoppingstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("api/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("user/{id}")
-    public User getUserById() {
-        return userService.getUserById(1L);
+    @GetMapping("/{id}")
+    public User getUserById(@RequestParam Long id) {
+        return userService.getUserById(id);
     }
+
+    @PostMapping
+    public User saveUser(@RequestBody User user) {
+        return userService.createUser(user);
+    }
+
 }
